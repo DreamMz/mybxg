@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+
+</head>
+<link rel="stylesheet" href="http://localhost.com/node_modules/bootstrap/dist/css/bootstrap.css">
+<!--<link rel="stylesheet" href="http://localhost.com/node_modules/awesome/css/font-awesome.css">-->
+<link rel="stylesheet" href="http://localhost.com/assets/css/index.css">
+
+
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <!--<img src="http://bxg.com/assets/img/monkey.png" class="img-circle" alt="">-->
+                <img src="/assets/img/monkey.png" class="img-circle" alt="">
+            </div>
+            <form action="" class="col-xs-offset-1 col-xs-10">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input id="name" type="text" class="form-control" placeholder="用户名" value="前端学院">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input id="pass" type="password" class="form-control" placeholder="密码" value="123456">
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!--<script src="http://bxg.com/node_modules/jquery/dist/jquery.js"></script>-->
+<!--<script src="/node_modules/jquery/dist/jquery.js"></script>
+<script src="/assets/js/index/login.js"></script>-->
+<script src="http://localhost.com/node_modules/requirejs/require.js"></script>
+<script>
+    require.config({
+        baseUrl: "/node_modules",
+        paths: {
+            jquery: "jquery/dist/jquery",
+            cookie: "jquery.cookie/jquery.cookie"
+        },
+        // shim: {
+
+        // },
+    })
+    require(["/assets/js/index/login.js"]);
+</script>
