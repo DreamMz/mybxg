@@ -45,15 +45,15 @@
 <script src="/assets/js/index/login.js"></script>-->
 <script src="http://localhost.com/node_modules/requirejs/require.js"></script>
 <script>
-    require.config({
-        baseUrl: "/node_modules",
-        paths: {
-            jquery: "jquery/dist/jquery",
-            cookie: "jquery.cookie/jquery.cookie"
-        },
-        // shim: {
+    // require.config({
+    //     baseUrl: "/node_modules",
+    //     paths: {
+    //         jquery: "jquery/dist/jquery",
+    //         cookie: "jquery.cookie/jquery.cookie"
+    //     },
+    //     // shim: {
 
-        // },
-    })
-    require(["/assets/js/index/login.js"]);
+    //     // },
+    // })
+    require(["/assets/js/config.js", "/assets/js/index/login.js"]);
 </script>

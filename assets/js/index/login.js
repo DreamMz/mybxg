@@ -74,16 +74,16 @@ define(["jquery", "cookie"], function($) {
 
                 if (data.code === 200) {
                     // alert("登陆成功");
-                    // $.cookie("userinfo", JSON.stringify(data.result), {
-                    //     expires: 7,
-                    //     path: "/"
-                    // });
+                    $.cookie("userinfo", JSON.stringify(data.result), {
+                        expires: 7,
+                        path: "/"
+                    });
                     console.log(data);
                     window.location.href = "http://localhost.com/view/index-a/index.html";
                 }
             },
             error: function() {
-                alert(登陆错误);
+                alert("登陆错误");
             }
         }
         $.ajax(obj);
