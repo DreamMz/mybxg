@@ -6,11 +6,22 @@ require.config({
         template: "art-template/lib/template-web",
         bootstrap: "bootstrap/dist/js/bootstrap",
         nprogress: "nprogress/nprogress",
-        datepicker: "bootstrap-datepicker/dist/js/bootstrap-datepicker"
+        datepicker: "bootstrap-datepicker/dist/js/bootstrap-datepicker",
+        validation: "jquery-validation/dist/jquery.validate",
+        form: 'jquery-form/dist/jquery.form.min',
+        uploadify: '/assets/js/libs/jquery.uploadify',
+        locales: "bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min"
+
     },
     shim: {
         bootstrap: {
             deps: ["jquery"]
+        },
+        uploadify: {
+            deps: ["jquery"]
+        },
+        locales: {
+            deps: ["jquery", "datepicker"]
         }
     }
 })

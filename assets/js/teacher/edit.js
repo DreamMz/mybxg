@@ -28,10 +28,11 @@ define(["jquery", "template", "datepicker"], function($, template, datepicker) {
 
     function getDataShow() {
         var obj = getId();
+        console.log(obj);
         var options = {
             url: "/api/teacher/edit",
             data: {
-                tc_id: obj.tc_id,
+                tc_id: obj['tc-id'],
             },
             type: "get",
             success: function(data) {
@@ -48,7 +49,7 @@ define(["jquery", "template", "datepicker"], function($, template, datepicker) {
     function savaDate() {
         $("form").on("click", ".save", function() {
             var obj = {};
-            obj.tc_id = getId().tc_id;
+            obj.tc_id = getId()["tc-id"];
             obj.tc_name = $('input[name="tc_name"]').val();
             obj.tc_join_date = $('input[name="tc_join_date"]').val(); //入职时间
             obj.tc_type = $('select[name="tc_type"]').val();
@@ -57,6 +58,7 @@ define(["jquery", "template", "datepicker"], function($, template, datepicker) {
                 url: "/api/teacher/update",
                 data: obj,
                 success: function(data) {
+                    console.log(222);
                     if (data.code == 200) {
                         alert("success!");
                     }

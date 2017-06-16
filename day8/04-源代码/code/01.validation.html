@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>jquery-validatetion插件</h1>
+  <form action="/xx">
+    用户名:<input name="tc_name" type="text" > <br>
+    邮箱: <input name="tc_email" type="text"><br>
+    日期: <input name="tc_date" type="text">
+    <button>提交</button>
+  </form>
+</body>
+</html>
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./node_modules/jquery-validation/dist/jquery.validate.js"></script>
+<script>
+  $('form').validate({
+    // 如果我们写了这个属性,如果表单的限制条件都通过了，这个方法会自动执行
+    // 并且表单的默认事件会被禁止掉
+    submitHandler: function () {
+      
+      // alert('哈哈，通过了，好开心')
+      $.ajax({url:'/xxxx'})
+    },
+    // 指定对于表单控制的验证规则
+    rules: {
+      // key是要验证的表单控制的name值
+      tc_name: {
+        // required: true 表示如果 tc_name对应的表单值为空的话，不能提交
+        required: true,
+        minlength: 6,
+        maxlength: 12
+      },
+      tc_email: {
+        required: true,
+
+        // 会验证tc_email中输入的是否是邮箱
+        email: true
+      },
+      tc_date:{
+        required: true,
+        date: true // 要求tc_date中的内容是日期的格式
+      }
+    },
+    // 用来定制提示信息
+    messages: {
+      // key是对应表单的的name属性值
+      tc_name: {
+        required: '用户名不能为空',
+        minlength: '用户名不能小于6位',
+        maxlength: '用户名不能大于12位'
+      },
+      tc_email: {
+        required: '邮箱不能为空',
+        email: '邮箱格式不对，需要包含一个@符号'
+      }
+    }
+  })
+</script>
+<script>
+  // $('form').on('submit', function (e) {
+  //   e.preventDefault()
+  //   var oVal = $('input[name="tc_name"]').val()
+  //   // if(!oVal.trim())
+  // })
+</script>

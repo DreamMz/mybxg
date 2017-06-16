@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/" method="POST">
+  <input type="text" name="test">
+  <button>提交</button>
+  </form>
+</body>
+</html>
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/jquery-form/dist/jquery.form.min.js"></script>
+<script>
+  $('form').on('submit', function (e) {
+    e.preventDefault()
+    console.log(18)
+    $(this).ajaxSubmit({
+      url:'./package.json',
+      // type: 'post',
+      data: {name:1},
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  })
+</script>

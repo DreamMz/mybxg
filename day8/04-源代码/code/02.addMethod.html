@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>自己添加验证的规则</h1>
+  <form action="/x">
+  <input type="text" name="tc_name">
+  <button>提交</button></form>
+</body>
+</html>
+<!--1.引包-->
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="./node_modules/jquery-validation/dist/jquery.validate.js"></script>
+<script>
+  // 2.初始化验证插件
+  // 传入一个对象，配置验证规则，及提示内容
+  var $form = $('form')
+  $form.validate({
+    // 验证规则
+    rules: {
+      tc_name: {
+        required: true,
+        email: true,
+        // 随便写个属性名,值为true
+        xxx: true
+      }
+    },
+    // 提示信息
+    messages:{
+      tc_name: {
+        required: "邮箱不能为空",
+        email: "必需是邮箱格式!"   // @itcast.cn
+      }
+    }
+  })
+  // 添加一个属于自己的验证规则，规则叫xxx, 也可以改为别的名字
+  // 是验证插件提供的方法addMethod
+
+  // 参数：1, 规则名, 如果希望某个表单使用这个规则，则加上xxx属性，值为true
+  // 参数: 2，是验证这个规则时，会自己执行的方法, 如果返回值为true,表明通过验证，否则不通过验证,会给出提示信息
+  // 参数: 3,就是验证信息
+  $.validator.addMethod('xxx', function (str) {
+    console.log(arguments)
+    // endsWith是es6中的方法，用于判断一个字符串是否以另一个字符串结尾
+    // 判断str是否以@itcast.cn结尾，如果是则返回值为true
+    if(str.endsWith('@itcast.cn')){
+      return true
+    }else{
+      return false
+    }
+    
+  }, '后缀需要为itcast.cn')
+  // 如果要定义多个规则 ，则多次调用$.validate.addMethod方法
+</script>
